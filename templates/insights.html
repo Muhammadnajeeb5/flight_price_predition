@@ -1,0 +1,34 @@
+<!-- insights.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Insights</title>
+    <style>
+        body {
+            background: #1c1c2b;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #00f2fe;
+        }
+        .nav-link {
+            margin: 20px;
+            text-decoration: none;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Include Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Top Features Affecting Flight Price</h1>
+    {{ plot_div|safe }}
+    <br>
+    <a class="nav-link" href="/">← Back to Home</a>
+</body>
+</html>

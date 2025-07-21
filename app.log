@@ -1,0 +1,954 @@
+2025-04-15 13:43:56,429 [ERROR] __main__: Error loading model: [Errno 2] No such file or directory: 'final_rf.pkl'
+2025-04-15 13:56:39,969 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 13:56:39,998 [INFO] __main__: Starting Flask app
+2025-04-15 13:56:40,729 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 13:56:40,729 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-15 13:56:40,748 [INFO] werkzeug:  * Restarting with stat
+2025-04-15 13:56:48,213 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 13:56:48,242 [INFO] __main__: Starting Flask app
+2025-04-15 13:56:48,297 [WARNING] werkzeug:  * Debugger is active!
+2025-04-15 13:56:48,327 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-15 13:57:18,487 [INFO] __main__: Home page requested
+2025-04-15 13:57:18,881 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:57:18] "GET / HTTP/1.1" 200 -
+2025-04-15 13:57:28,333 [INFO] __main__: Received prediction request
+2025-04-15 13:57:28,390 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-15 13:57:35,305 [INFO] __main__: Received prediction request
+2025-04-15 13:57:35,306 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-15 13:57:36,972 [INFO] __main__: Prediction successful: \u20b94532.64
+2025-04-15 13:57:36,975 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:57:36] "POST /predict HTTP/1.1" 200 -
+2025-04-15 13:57:43,241 [INFO] __main__: Insights page requested
+2025-04-15 13:57:51,684 [INFO] __main__: Insights page requested
+2025-04-15 13:57:53,196 [INFO] __main__: Dashboard page requested
+2025-04-15 13:57:53,297 [ERROR] __main__: Error generating dashboard: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\compat\_optional.py", line 135, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 132, in dashboard
+    df = pd.read_excel(r"C:\Users\HP\Music\Data_Train.xlsx")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_base.py", line 495, in read_excel
+    io = ExcelFile(
+        io,
+    ...<2 lines>...
+        engine_kwargs=engine_kwargs,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_base.py", line 1567, in __init__
+    self._reader = self._engines[engine](
+                   ~~~~~~~~~~~~~~~~~~~~~^
+        self._io,
+        ^^^^^^^^^
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        engine_kwargs=engine_kwargs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_openpyxl.py", line 552, in __init__
+    import_optional_dependency("openpyxl")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\compat\_optional.py", line 138, in import_optional_dependency
+    raise ImportError(msg)
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-04-15 13:57:53,449 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:57:53] "GET /dashboard HTTP/1.1" 200 -
+2025-04-15 13:57:58,724 [INFO] __main__: Insights generated successfully
+2025-04-15 13:57:58,724 [INFO] __main__: Insights generated successfully
+2025-04-15 13:57:58,841 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:57:58] "GET /insights HTTP/1.1" 200 -
+2025-04-15 13:57:58,845 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:57:58] "GET /insights HTTP/1.1" 200 -
+2025-04-15 13:58:02,898 [INFO] __main__: Explore page requested (GET)
+2025-04-15 13:58:02,958 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:02] "GET /explore HTTP/1.1" 200 -
+2025-04-15 13:58:29,431 [INFO] __main__: Insights page requested
+2025-04-15 13:58:29,728 [INFO] __main__: Insights generated successfully
+2025-04-15 13:58:29,730 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:29] "GET /insights HTTP/1.1" 200 -
+2025-04-15 13:58:32,856 [ERROR] app: Error generating SHAP explanation: No module named 'matplotlib'
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 221, in shap_explain
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2025-04-15 13:58:32,864 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:32] "GET /shap HTTP/1.1" 200 -
+2025-04-15 13:58:32,870 [ERROR] app: Error generating SHAP explanation: No module named 'matplotlib'
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 221, in shap_explain
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2025-04-15 13:58:32,875 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:32] "GET /shap HTTP/1.1" 200 -
+2025-04-15 13:58:45,032 [INFO] __main__: Dashboard page requested
+2025-04-15 13:58:45,053 [ERROR] __main__: Error generating dashboard: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\compat\_optional.py", line 135, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 132, in dashboard
+    df = pd.read_excel(r"C:\Users\HP\Music\Data_Train.xlsx")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_base.py", line 495, in read_excel
+    io = ExcelFile(
+        io,
+    ...<2 lines>...
+        engine_kwargs=engine_kwargs,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_base.py", line 1567, in __init__
+    self._reader = self._engines[engine](
+                   ~~~~~~~~~~~~~~~~~~~~~^
+        self._io,
+        ^^^^^^^^^
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        engine_kwargs=engine_kwargs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\excel\_openpyxl.py", line 552, in __init__
+    import_optional_dependency("openpyxl")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\compat\_optional.py", line 138, in import_optional_dependency
+    raise ImportError(msg)
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-04-15 13:58:45,065 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:45] "GET /dashboard HTTP/1.1" 200 -
+2025-04-15 13:58:58,008 [INFO] __main__: Prediction successful: \u20b94532.64
+2025-04-15 13:58:58,011 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 13:58:58] "POST /predict HTTP/1.1" 200 -
+2025-04-15 14:01:41,010 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 14:01:41,047 [INFO] __main__: Starting Flask app
+2025-04-15 14:01:41,154 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 14:01:41,155 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-15 14:01:41,161 [INFO] werkzeug:  * Restarting with stat
+2025-04-15 14:01:49,066 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 14:01:49,084 [INFO] __main__: Starting Flask app
+2025-04-15 14:01:49,124 [WARNING] werkzeug:  * Debugger is active!
+2025-04-15 14:01:49,162 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-15 14:01:57,145 [INFO] __main__: Home page requested
+2025-04-15 14:01:57,183 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:01:57] "GET / HTTP/1.1" 200 -
+2025-04-15 14:02:02,229 [INFO] __main__: Dashboard page requested
+2025-04-15 14:02:13,009 [INFO] __main__: Dashboard plots generated successfully
+2025-04-15 14:02:13,333 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:02:13] "GET /dashboard HTTP/1.1" 200 -
+2025-04-15 14:02:36,060 [INFO] __main__: Home page requested
+2025-04-15 14:02:36,063 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:02:36] "GET / HTTP/1.1" 200 -
+2025-04-15 14:02:39,632 [INFO] __main__: Insights page requested
+2025-04-15 14:02:40,274 [INFO] __main__: Insights generated successfully
+2025-04-15 14:02:40,282 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:02:40] "GET /insights HTTP/1.1" 200 -
+2025-04-15 14:03:04,352 [INFO] __main__: Home page requested
+2025-04-15 14:03:04,355 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:03:04] "GET / HTTP/1.1" 200 -
+2025-04-15 14:03:08,426 [ERROR] app: Error generating SHAP explanation: No module named 'matplotlib'
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 221, in shap_explain
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2025-04-15 14:03:08,434 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:03:08] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:05:30,180 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 14:05:30,195 [INFO] __main__: Starting Flask app
+2025-04-15 14:05:30,290 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 14:05:30,291 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-15 14:05:30,296 [INFO] werkzeug:  * Restarting with stat
+2025-04-15 14:05:38,255 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 14:05:38,261 [INFO] __main__: Starting Flask app
+2025-04-15 14:05:38,287 [WARNING] werkzeug:  * Debugger is active!
+2025-04-15 14:05:38,306 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-15 14:05:50,540 [INFO] __main__: Home page requested
+2025-04-15 14:05:50,559 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:05:50] "GET / HTTP/1.1" 200 -
+2025-04-15 14:08:55,043 [ERROR] app: Error generating SHAP explanation: Can't set icon; window has no wrapper.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 245, in shap_explain
+    plt.figure()
+    ~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\pyplot.py", line 1042, in figure
+    manager = new_figure_manager(
+        num, figsize=figsize, dpi=dpi,
+        facecolor=facecolor, edgecolor=edgecolor, frameon=frameon,
+        FigureClass=FigureClass, **kwargs)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\pyplot.py", line 552, in new_figure_manager
+    return _get_backend_mod().new_figure_manager(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backend_bases.py", line 3501, in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backend_bases.py", line 3506, in new_figure_manager_given_figure
+    return cls.FigureCanvas.new_manager(figure, num)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backend_bases.py", line 1783, in new_manager
+    return cls.manager_class.create_with_canvas(cls, figure, num)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backends\_backend_tk.py", line 525, in create_with_canvas
+    window.iconphoto(False, icon_img_large, icon_img)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 2316, in wm_iconphoto
+    self.tk.call('wm', 'iconphoto', self._w, *args)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: Can't set icon; window has no wrapper.
+2025-04-15 14:08:55,870 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:08:55] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:09:39,182 [ERROR] app: Error generating SHAP explanation: main thread is not in main loop
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 246, in shap_explain
+    shap.summary_plot(shap_values, X_sample, plot_type="bar", show=False)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\shap\plots\_beeswarm.py", line 782, in summary_legacy
+    pl.gcf().set_size_inches(8, len(feature_order) * row_height + 1.5)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\figure.py", line 3147, in set_size_inches
+    manager.resize(*(size * self.dpi).astype(int))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backends\_backend_tk.py", line 567, in resize
+    self.canvas._tkcanvas.configure(width=width, height=height)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 1822, in configure
+    return self._configure('configure', cnf, kw)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 1812, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2025-04-15 14:09:39,192 [ERROR] app: Error generating SHAP explanation: main thread is not in main loop
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 246, in shap_explain
+    shap.summary_plot(shap_values, X_sample, plot_type="bar", show=False)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\shap\plots\_beeswarm.py", line 782, in summary_legacy
+    pl.gcf().set_size_inches(8, len(feature_order) * row_height + 1.5)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\figure.py", line 3147, in set_size_inches
+    manager.resize(*(size * self.dpi).astype(int))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backends\_backend_tk.py", line 567, in resize
+    self.canvas._tkcanvas.configure(width=width, height=height)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 1822, in configure
+    return self._configure('configure', cnf, kw)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 1812, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2025-04-15 14:09:39,287 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:09:39] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:09:39,534 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:09:39] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:09:39,703 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:09:39] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:10:31,479 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 14:10:31] "GET /shap HTTP/1.1" 200 -
+2025-04-15 14:10:53,787 [ERROR] app: Error generating SHAP explanation: main thread is not in main loop
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 253, in shap_explain
+    plt.close()
+    ~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\pyplot.py", line 1192, in close
+    _pylab_helpers.Gcf.destroy(manager)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\_pylab_helpers.py", line 66, in destroy
+    manager.destroy()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\matplotlib\backends\_backend_tk.py", line 590, in destroy
+    self._window_dpi.trace_remove('write', self._window_dpi_cbname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\tkinter\__init__.py", line 474, in trace_remove
+    self._tk.call('trace', 'remove', 'variable',
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  self._name, mode, cbname)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2025-04-15 15:52:54,156 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 15:52:54,209 [INFO] __main__: Starting Flask app
+2025-04-15 15:52:54,535 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 15:52:54,536 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-15 15:52:54,544 [INFO] werkzeug:  * Restarting with stat
+2025-04-15 15:53:09,302 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 15:53:09,322 [INFO] __main__: Starting Flask app
+2025-04-15 15:53:09,365 [WARNING] werkzeug:  * Debugger is active!
+2025-04-15 15:53:09,425 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-15 15:53:31,737 [INFO] __main__: Home page requested
+2025-04-15 15:53:31,863 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:53:31] "GET / HTTP/1.1" 200 -
+2025-04-15 15:53:43,049 [INFO] __main__: Home page requested
+2025-04-15 15:53:43,107 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:53:43] "GET / HTTP/1.1" 200 -
+2025-04-15 15:54:26,276 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:54:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-15 15:54:26,372 [INFO] __main__: Explore page requested (GET)
+2025-04-15 15:54:26,415 [INFO] __main__: Explore page requested (GET)
+2025-04-15 15:54:26,579 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:54:26] "GET /explore HTTP/1.1" 200 -
+2025-04-15 15:54:26,583 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:54:26] "GET /explore HTTP/1.1" 200 -
+2025-04-15 15:55:09,029 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:09,088 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:09,153 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:49,707 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:49,831 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:49,867 [INFO] __main__: File upload received in /explore
+2025-04-15 15:55:49,884 [INFO] __main__: Received prediction request
+2025-04-15 15:55:49,890 [INFO] __main__: Received prediction request
+2025-04-15 15:55:49,895 [INFO] __main__: Received prediction request
+2025-04-15 15:55:49,912 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-15 15:55:49,922 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-15 15:55:49,946 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-15 15:55:50,753 [INFO] __main__: Prediction successful: \u20b94532.64
+2025-04-15 15:55:50,756 [INFO] __main__: Prediction successful: \u20b94532.64
+2025-04-15 15:55:50,756 [INFO] __main__: Prediction successful: \u20b94532.64
+2025-04-15 15:55:50,772 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:50] "POST /predict HTTP/1.1" 200 -
+2025-04-15 15:55:50,775 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:50] "POST /predict HTTP/1.1" 200 -
+2025-04-15 15:55:50,783 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:50] "POST /predict HTTP/1.1" 200 -
+2025-04-15 15:55:51,390 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:51] "GET /shap HTTP/1.1" 200 -
+2025-04-15 15:55:52,060 [INFO] __main__: Home page requested
+2025-04-15 15:55:52,065 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:52] "GET / HTTP/1.1" 200 -
+2025-04-15 15:55:52,120 [INFO] __main__: Home page requested
+2025-04-15 15:55:52,126 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:52] "GET / HTTP/1.1" 200 -
+2025-04-15 15:55:52,791 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:52] "GET /shap HTTP/1.1" 200 -
+2025-04-15 15:55:53,770 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:55:53] "GET /shap HTTP/1.1" 200 -
+2025-04-15 15:55:54,224 [INFO] __main__: Insights page requested
+2025-04-15 15:56:47,312 [ERROR] __main__: Error processing uploaded file: Invalid value
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 189, in explore
+    figA = px.histogram(df, x="Price", title="Price Distribution", template="plotly_dark")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_chart_types.py", line 490, in histogram
+    return make_figure(
+        args=locals(),
+    ...<6 lines>...
+        layout_patch=dict(barmode=barmode, barnorm=barnorm),
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 2477, in make_figure
+    apply_default_cascade(args)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 1072, in apply_default_cascade
+    bar.marker.pattern.shape for bar in args["template"].data.bar
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\graph_objs\bar\marker\_pattern.py", line 252, in shape
+    return self["shape"]
+           ~~~~^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4734, in __getitem__
+    elif self._props is not None and prop in self._props:
+         ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4463, in _get_child_props
+    child_ind = BaseFigure._index_is(children, child)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 3957, in _index_is
+    raise ValueError("Invalid value")
+ValueError: Invalid value
+2025-04-15 15:56:47,318 [ERROR] __main__: Error generating insights: Invalid value
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 121, in insights
+    fig = px.bar(df_imp, x="Importance", y="Feature", orientation="h",
+                 title="Feature Importance", template="plotly_dark")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_chart_types.py", line 381, in bar
+    return make_figure(
+        args=locals(),
+    ...<2 lines>...
+        layout_patch=dict(barmode=barmode),
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 2477, in make_figure
+    apply_default_cascade(args)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 1072, in apply_default_cascade
+    bar.marker.pattern.shape for bar in args["template"].data.bar
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\graph_objs\bar\marker\_pattern.py", line 252, in shape
+    return self["shape"]
+           ~~~~^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4734, in __getitem__
+    elif self._props is not None and prop in self._props:
+         ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4463, in _get_child_props
+    child_ind = BaseFigure._index_is(children, child)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 3957, in _index_is
+    raise ValueError("Invalid value")
+ValueError: Invalid value
+2025-04-15 15:56:47,320 [ERROR] __main__: Error processing uploaded file: Invalid value
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 189, in explore
+    figA = px.histogram(df, x="Price", title="Price Distribution", template="plotly_dark")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_chart_types.py", line 490, in histogram
+    return make_figure(
+        args=locals(),
+    ...<6 lines>...
+        layout_patch=dict(barmode=barmode, barnorm=barnorm),
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 2477, in make_figure
+    apply_default_cascade(args)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 1072, in apply_default_cascade
+    bar.marker.pattern.shape for bar in args["template"].data.bar
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\graph_objs\bar\marker\_pattern.py", line 252, in shape
+    return self["shape"]
+           ~~~~^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4734, in __getitem__
+    elif self._props is not None and prop in self._props:
+         ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4463, in _get_child_props
+    child_ind = BaseFigure._index_is(children, child)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 3957, in _index_is
+    raise ValueError("Invalid value")
+ValueError: Invalid value
+2025-04-15 15:56:47,320 [ERROR] __main__: Error processing uploaded file: Invalid value
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 189, in explore
+    figA = px.histogram(df, x="Price", title="Price Distribution", template="plotly_dark")
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_chart_types.py", line 490, in histogram
+    return make_figure(
+        args=locals(),
+    ...<6 lines>...
+        layout_patch=dict(barmode=barmode, barnorm=barnorm),
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 2477, in make_figure
+    apply_default_cascade(args)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\express\_core.py", line 1072, in apply_default_cascade
+    bar.marker.pattern.shape for bar in args["template"].data.bar
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\graph_objs\bar\marker\_pattern.py", line 252, in shape
+    return self["shape"]
+           ~~~~^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4734, in __getitem__
+    elif self._props is not None and prop in self._props:
+         ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4443, in _get_child_props
+    if self._props is None:
+       ^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4429, in _props
+    return self.parent._get_child_props(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 4463, in _get_child_props
+    child_ind = BaseFigure._index_is(children, child)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\plotly\basedatatypes.py", line 3957, in _index_is
+    raise ValueError("Invalid value")
+ValueError: Invalid value
+2025-04-15 15:56:47,821 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:56:47] "[32mPOST /explore HTTP/1.1[0m" 302 -
+2025-04-15 15:56:47,833 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:56:47] "GET /insights HTTP/1.1" 200 -
+2025-04-15 15:56:47,864 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:56:47] "[32mPOST /explore HTTP/1.1[0m" 302 -
+2025-04-15 15:56:47,872 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:56:47] "[32mPOST /explore HTTP/1.1[0m" 302 -
+2025-04-15 15:56:48,093 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:56:48] "GET /shap HTTP/1.1" 200 -
+2025-04-15 15:57:26,260 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:57:26] "GET /shap HTTP/1.1" 200 -
+2025-04-15 15:57:30,755 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-15 15:57:30,762 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:57:30] "POST /explore HTTP/1.1" 200 -
+2025-04-15 15:57:30,762 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-15 15:57:30,770 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:57:30] "POST /explore HTTP/1.1" 200 -
+2025-04-15 15:57:30,773 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-15 15:57:30,776 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 15:57:30] "POST /explore HTTP/1.1" 200 -
+2025-04-15 16:02:47,004 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 16:02:47,036 [INFO] __main__: Starting Flask app
+2025-04-15 16:02:47,564 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 16:02:47,565 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-15 16:02:47,570 [INFO] werkzeug:  * Restarting with stat
+2025-04-15 16:03:02,375 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-15 16:03:02,390 [INFO] __main__: Starting Flask app
+2025-04-15 16:03:02,623 [WARNING] werkzeug:  * Debugger is active!
+2025-04-15 16:03:02,661 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-15 16:03:19,225 [INFO] __main__: Home page requested
+2025-04-15 16:03:19,249 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:03:19] "GET / HTTP/1.1" 200 -
+2025-04-15 16:03:19,256 [INFO] __main__: Home page requested
+2025-04-15 16:03:19,260 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:03:19] "GET / HTTP/1.1" 200 -
+2025-04-15 16:04:05,376 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:04:05] "GET /shap HTTP/1.1" 200 -
+2025-04-15 16:04:46,903 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:04:46] "GET /shap HTTP/1.1" 200 -
+2025-04-15 16:05:25,917 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:05:25] "GET /shap HTTP/1.1" 200 -
+2025-04-15 16:05:42,777 [INFO] __main__: Home page requested
+2025-04-15 16:05:42,786 [INFO] werkzeug: 127.0.0.1 - - [15/Apr/2025 16:05:42] "GET / HTTP/1.1" 200 -
+2025-04-17 16:23:20,028 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 16:23:20,057 [INFO] __main__: Starting Flask app
+2025-04-17 16:23:20,766 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 16:23:20,767 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 16:23:20,789 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 16:23:26,132 [ERROR] __main__: Error loading model: 
+2025-04-17 19:41:56,973 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:41:56,999 [INFO] __main__: Starting Flask app
+2025-04-17 19:41:57,121 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 19:41:57,122 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 19:41:57,128 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 19:42:04,346 [ERROR] __main__: Error loading model: 
+2025-04-17 19:43:24,269 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:43:24,290 [INFO] __main__: Starting Flask app
+2025-04-17 19:43:24,381 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 19:43:24,382 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 19:43:24,388 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 19:56:57,534 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:56:57,679 [INFO] __main__: Starting Flask app
+2025-04-17 19:56:59,036 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 19:56:59,037 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 19:56:59,075 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 19:57:10,862 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:57:10,885 [INFO] __main__: Starting Flask app
+2025-04-17 19:57:10,925 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 19:57:10,956 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 19:57:23,883 [INFO] __main__: Home page requested
+2025-04-17 19:57:24,045 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 19:57:24] "GET / HTTP/1.1" 200 -
+2025-04-17 19:59:45,089 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:59:45,098 [INFO] __main__: Starting Flask app
+2025-04-17 19:59:45,169 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 19:59:45,170 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 19:59:45,175 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 19:59:52,207 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 19:59:52,217 [INFO] __main__: Starting Flask app
+2025-04-17 19:59:52,247 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 19:59:52,260 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 20:19:43,579 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:19:43,590 [INFO] __main__: Starting Flask app
+2025-04-17 20:19:44,157 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 20:19:44,158 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 20:19:44,180 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 20:19:50,668 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:19:50,676 [INFO] __main__: Starting Flask app
+2025-04-17 20:19:50,698 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 20:19:50,713 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 20:21:34,005 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:21:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-17 20:23:00,115 [INFO] __main__: Insights page requested
+2025-04-17 20:23:13,845 [INFO] __main__: Insights generated successfully
+2025-04-17 20:23:14,032 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:23:14] "GET /insights HTTP/1.1" 200 -
+2025-04-17 20:24:13,262 [INFO] __main__: Home page requested
+2025-04-17 20:24:13,523 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:24:13] "GET / HTTP/1.1" 200 -
+2025-04-17 20:24:18,684 [INFO] __main__: Received prediction request
+2025-04-17 20:24:18,726 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:24:18,740 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Arrival_hour
+- Arrival_minute
+- Dep_hour
+- Dep_minute
+Feature names seen at fit time, yet now missing:
+- Arrival_Time_hour
+- Arrival_Time_minute
+- Dep_Time_hour
+- Dep_Time_minute
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 94, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Arrival_hour
+- Arrival_minute
+- Dep_hour
+- Dep_minute
+Feature names seen at fit time, yet now missing:
+- Arrival_Time_hour
+- Arrival_Time_minute
+- Dep_Time_hour
+- Dep_Time_minute
+
+2025-04-17 20:24:18,874 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:24:18] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:29:51,340 [INFO] __main__: Dashboard page requested
+2025-04-17 20:30:01,718 [INFO] __main__: Dashboard plots generated successfully
+2025-04-17 20:30:01,929 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:30:01] "GET /dashboard HTTP/1.1" 200 -
+2025-04-17 20:30:56,369 [INFO] __main__: Home page requested
+2025-04-17 20:30:56,447 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:30:56] "GET / HTTP/1.1" 200 -
+2025-04-17 20:32:09,958 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:32:09] "GET /shap HTTP/1.1" 200 -
+2025-04-17 20:32:09,956 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:32:09] "GET /shap HTTP/1.1" 200 -
+2025-04-17 20:33:01,238 [INFO] __main__: Home page requested
+2025-04-17 20:33:01,243 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:33:01] "GET / HTTP/1.1" 200 -
+2025-04-17 20:33:01,330 [INFO] __main__: Home page requested
+2025-04-17 20:33:01,331 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:33:01] "GET / HTTP/1.1" 200 -
+2025-04-17 20:35:54,773 [INFO] __main__: Received prediction request
+2025-04-17 20:35:54,909 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:35:54,958 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Arrival_hour
+- Arrival_minute
+- Dep_hour
+- Dep_minute
+Feature names seen at fit time, yet now missing:
+- Arrival_Time_hour
+- Arrival_Time_minute
+- Dep_Time_hour
+- Dep_Time_minute
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 94, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Arrival_hour
+- Arrival_minute
+- Dep_hour
+- Dep_minute
+Feature names seen at fit time, yet now missing:
+- Arrival_Time_hour
+- Arrival_Time_minute
+- Dep_Time_hour
+- Dep_Time_minute
+
+2025-04-17 20:35:55,085 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:35:55] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:49:56,612 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:49:56,630 [INFO] __main__: Starting Flask app
+2025-04-17 20:49:59,467 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 20:49:59,468 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 20:49:59,489 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 20:50:13,667 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:50:13,677 [INFO] __main__: Starting Flask app
+2025-04-17 20:50:13,711 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 20:50:13,738 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 20:51:35,367 [INFO] __main__: Received prediction request
+2025-04-17 20:51:35,572 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:51:35,599 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 96, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:51:35,924 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:51:35] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:51:43,869 [INFO] __main__: Received prediction request
+2025-04-17 20:51:43,871 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:51:43,872 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 96, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:51:43,881 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:51:43] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:51:46,266 [INFO] __main__: Home page requested
+2025-04-17 20:51:46,268 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:51:46] "GET / HTTP/1.1" 200 -
+2025-04-17 20:51:51,479 [INFO] __main__: Received prediction request
+2025-04-17 20:51:51,480 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:51:51,481 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 96, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:51:51,483 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:51:51] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:52:34,363 [INFO] __main__: Received prediction request
+2025-04-17 20:52:34,366 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:52:34,367 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 96, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:52:34,373 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:52:34] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:57:54,297 [INFO] werkzeug:  * Detected change in 'C:\\Users\\HP\\OneDrive\\Desktop\\FlightPricePrediction\\app.py', reloading
+2025-04-17 20:58:11,144 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:58:11,185 [INFO] __main__: Starting Flask app
+2025-04-17 20:58:11,305 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 20:58:11,306 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 20:58:11,309 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 20:58:25,410 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 20:58:25,433 [INFO] __main__: Starting Flask app
+2025-04-17 20:58:25,498 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 20:58:25,540 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 20:59:10,787 [INFO] __main__: Home page requested
+2025-04-17 20:59:11,029 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:11] "GET / HTTP/1.1" 200 -
+2025-04-17 20:59:11,388 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-17 20:59:16,371 [INFO] __main__: Received prediction request
+2025-04-17 20:59:16,516 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:59:16,538 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 98, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:59:16,602 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:16] "POST /predict HTTP/1.1" 200 -
+2025-04-17 20:59:21,347 [INFO] __main__: Home page requested
+2025-04-17 20:59:21,349 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:21] "GET / HTTP/1.1" 200 -
+2025-04-17 20:59:21,768 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-17 20:59:24,385 [INFO] __main__: Received prediction request
+2025-04-17 20:59:24,389 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 12, 30, 9, 15, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 20:59:24,390 [ERROR] __main__: Error in /predict route: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\FlightPricePrediction\app.py", line 98, in predict
+    prediction = model.predict(final_df)[0]
+                 ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 1066, in predict
+    X = self._validate_X_predict(X)
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 638, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\validation.py", line 2777, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-04-17 20:59:24,401 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 20:59:24] "POST /predict HTTP/1.1" 200 -
+2025-04-17 21:04:13,813 [INFO] werkzeug:  * Detected change in 'C:\\Users\\HP\\OneDrive\\Desktop\\FlightPricePrediction\\app.py', reloading
+2025-04-17 21:04:20,576 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:06:09,082 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:06:09,109 [INFO] __main__: Starting Flask app
+2025-04-17 21:06:09,220 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 21:06:09,220 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 21:06:09,225 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:06:22,247 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:06:22,279 [INFO] __main__: Starting Flask app
+2025-04-17 21:06:22,323 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 21:06:22,391 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 21:06:36,842 [INFO] __main__: Home page requested
+2025-04-17 21:06:36,871 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:06:36] "GET / HTTP/1.1" 200 -
+2025-04-17 21:06:41,323 [INFO] __main__: Received prediction request
+2025-04-17 21:06:41,328 [INFO] __main__: Received prediction request
+2025-04-17 21:06:41,360 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 21:06:41,365 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 21:06:41,639 [INFO] __main__: Prediction successful: \u20b94409.3
+2025-04-17 21:06:41,650 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:06:41] "POST /predict HTTP/1.1" 200 -
+2025-04-17 21:06:41,669 [INFO] __main__: Prediction successful: \u20b94409.3
+2025-04-17 21:06:41,671 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:06:41] "POST /predict HTTP/1.1" 200 -
+2025-04-17 21:07:12,247 [INFO] __main__: Explore page requested (GET)
+2025-04-17 21:07:12,305 [INFO] __main__: Explore page requested (GET)
+2025-04-17 21:07:12,538 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:07:12] "GET /explore HTTP/1.1" 200 -
+2025-04-17 21:07:12,551 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:07:12] "GET /explore HTTP/1.1" 200 -
+2025-04-17 21:07:31,217 [INFO] __main__: File upload received in /explore
+2025-04-17 21:07:44,115 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-17 21:07:44,121 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:07:44] "POST /explore HTTP/1.1" 200 -
+2025-04-17 21:21:27,441 [INFO] werkzeug:  * Detected change in 'C:\\Users\\HP\\OneDrive\\Desktop\\FlightPricePrediction\\app.py', reloading
+2025-04-17 21:21:36,080 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:21:53,637 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:21:53,675 [INFO] __main__: Starting Flask app
+2025-04-17 21:21:53,843 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 21:21:53,844 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 21:21:53,848 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:22:08,539 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:22:08,554 [INFO] __main__: Starting Flask app
+2025-04-17 21:22:08,593 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 21:22:08,635 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 21:22:20,274 [INFO] __main__: Home page requested
+2025-04-17 21:22:20,324 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:22:20] "GET / HTTP/1.1" 200 -
+2025-04-17 21:22:27,333 [INFO] __main__: Explore page requested (GET)
+2025-04-17 21:22:27,347 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:22:27] "GET /explore HTTP/1.1" 200 -
+2025-04-17 21:22:35,576 [INFO] __main__: File upload received in /explore
+2025-04-17 21:22:37,774 [INFO] __main__: Raw data loaded successfully
+2025-04-17 21:22:37,947 [INFO] __main__: Data preprocessing completed
+2025-04-17 21:22:39,734 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-17 21:22:39,738 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:22:39] "POST /explore HTTP/1.1" 200 -
+2025-04-17 21:28:23,440 [INFO] werkzeug:  * Detected change in 'C:\\Users\\HP\\OneDrive\\Desktop\\FlightPricePrediction\\app.py', reloading
+2025-04-17 21:28:28,923 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:28:40,191 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:28:40,467 [INFO] __main__: Starting Flask app
+2025-04-17 21:28:40,874 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 21:28:41,202 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 21:49:08,860 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:49:08,874 [INFO] __main__: Starting Flask app
+2025-04-17 21:49:08,959 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 21:49:08,959 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 21:49:08,964 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:49:17,693 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:49:17,696 [INFO] __main__: Starting Flask app
+2025-04-17 21:49:17,717 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 21:49:17,732 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 21:49:31,994 [INFO] __main__: Home page requested
+2025-04-17 21:49:32,003 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:49:32] "GET / HTTP/1.1" 200 -
+2025-04-17 21:49:45,429 [INFO] __main__: Explore page requested (GET)
+2025-04-17 21:49:45,441 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:49:45] "GET /explore HTTP/1.1" 200 -
+2025-04-17 21:50:26,606 [INFO] __main__: File upload received in /explore
+2025-04-17 21:50:28,624 [INFO] __main__: Raw data loaded successfully
+2025-04-17 21:50:28,926 [INFO] __main__: Data preprocessing completed
+2025-04-17 21:50:30,937 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-17 21:50:30,943 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 21:50:30] "POST /explore HTTP/1.1" 200 -
+2025-04-17 21:54:53,237 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:54:53,255 [INFO] __main__: Starting Flask app
+2025-04-17 21:54:53,508 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-17 21:54:53,509 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-17 21:54:53,514 [INFO] werkzeug:  * Restarting with stat
+2025-04-17 21:55:02,628 [INFO] __main__: Model loaded successfully from final_rf.pkl
+2025-04-17 21:55:02,637 [INFO] __main__: Starting Flask app
+2025-04-17 21:55:02,671 [WARNING] werkzeug:  * Debugger is active!
+2025-04-17 21:55:02,690 [INFO] werkzeug:  * Debugger PIN: 124-964-316
+2025-04-17 22:00:08,359 [INFO] __main__: Home page requested
+2025-04-17 22:00:08,996 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 22:00:08] "GET / HTTP/1.1" 200 -
+2025-04-17 22:00:15,503 [INFO] __main__: Received prediction request
+2025-04-17 22:00:15,661 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 22:00:16,058 [INFO] __main__: Prediction successful: \u20b94329.19
+2025-04-17 22:00:16,066 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 22:00:16] "POST /predict HTTP/1.1" 200 -
+2025-04-17 22:00:16,256 [INFO] __main__: Received prediction request
+2025-04-17 22:00:16,258 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 22:00:16,302 [INFO] __main__: Prediction successful: \u20b94329.19
+2025-04-17 22:00:16,303 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 22:00:16] "POST /predict HTTP/1.1" 200 -
+2025-04-17 22:00:18,759 [INFO] __main__: Explore page requested (GET)
+2025-04-17 22:00:18,789 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 22:00:18] "GET /explore HTTP/1.1" 200 -
+2025-04-17 22:00:41,985 [INFO] __main__: File upload received in /explore
+2025-04-17 22:00:48,956 [INFO] __main__: Raw data loaded successfully
+2025-04-17 22:12:22,164 [INFO] __main__: File upload received in /explore
+2025-04-17 22:12:26,059 [INFO] __main__: Raw data loaded successfully
+2025-04-17 22:13:40,264 [INFO] __main__: Received prediction request
+2025-04-17 22:13:40,268 [INFO] __main__: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-04-17 22:13:40,393 [INFO] __main__: Prediction successful: \u20b94329.19
+2025-04-17 22:13:40,398 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 22:13:40] "POST /predict HTTP/1.1" 200 -
+2025-04-17 23:53:40,885 [INFO] __main__: Data preprocessing completed
+2025-04-17 23:53:40,901 [INFO] __main__: Data preprocessing completed
+2025-04-17 23:53:43,657 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-17 23:53:43,702 [INFO] __main__: User-uploaded data processed and plots generated successfully
+2025-04-17 23:53:43,716 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 23:53:43] "POST /explore HTTP/1.1" 200 -
+2025-04-17 23:53:43,716 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 23:53:43] "POST /explore HTTP/1.1" 200 -

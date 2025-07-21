@@ -1,0 +1,38 @@
+<!-- templates/shap.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHAP Model Explanation</title>
+    <style>
+        body {
+            background: #1c1c2b;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #00f2fe;
+        }
+        .nav-link {
+            margin: 20px;
+            text-decoration: none;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+        img {
+            max-width: 90%;
+            border: 3px solid #00f2fe;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>SHAP Feature Importance</h1>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="SHAP Explanation Plot">
+    <br>
+    <a class="nav-link" href="/">← Back to Home</a>
+</body>
+</html>

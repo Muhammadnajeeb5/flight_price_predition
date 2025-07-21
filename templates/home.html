@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #1e1e2f, #2c2c3f);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            text-align: center;
+            color: #00f2fe;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #2d2d3d;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #000;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        label, select, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        input, select {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #444;
+            color: white;
+        }
+        button {
+            background-color: #00f2fe;
+            color: #000;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-buttons a {
+            margin: 0 5px;
+            text-decoration: none;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="/insights"><button>View Insights</button></a>
+        <a href="/dashboard"><button>View Dashboard</button></a>
+        <a href="/explore"><button>Explore Data</button></a>
+		<a href="/shap"><button>View SHAP Explainability</button></a>
+    </div>
+    <h1>Flight Price Predictor</h1>
+    <div class="form-container">
+        <form id="predictForm" action="/predict" method="post">
+            <label>Airline</label>
+            <select name="airline">
+                {% for a in airlines %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Destination</label>
+            <select name="destination">
+                {% for d in destinations %}
+                    <option value="{{ d }}">{{ d }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Source</label>
+            <select name="source">
+                {% for s in sources %}
+                    <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Total Stops</label>
+            <input type="number" name="stops" min="0" max="4" required>
+
+            <label>Journey Day</label>
+            <input type="number" name="journey_day" min="1" max="31" required>
+
+            <label>Journey Month</label>
+            <input type="number" name="journey_month" min="1" max="12" required>
+
+            <label>Arrival Hour</label>
+            <input type="number" name="arrival_hour" min="0" max="23" required>
+
+            <label>Arrival Minute</label>
+            <input type="number" name="arrival_minute" min="0" max="59" required>
+
+            <label>Departure Hour</label>
+            <input type="number" name="dep_hour" min="0" max="23" required>
+
+            <label>Departure Minute</label>
+            <input type="number" name="dep_minute" min="0" max="59" required>
+
+            <label>Duration Hours</label>
+            <input type="number" name="duration_hour" min="0" max="24" required>
+
+            <label>Duration Minutes</label>
+            <input type="number" name="duration_minute" min="0" max="59" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Try Demo Button -->
+        <button id="demoBtn" type="button">Try Demo Input</button>
+        
+        <!-- Result area for AJAX -->
+        <div class="result" id="resultArea">
+            {% if prediction_text %}
+                {{ prediction_text }}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Include jQuery for simplicity (you can also use vanilla JS or fetch) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- AJAX form submission and Demo button script -->
+    <script>
+        // AJAX submission: When the form is submitted, use jQuery's AJAX to post data and update result area without refreshing
+        $('#predictForm').submit(function(event) {
+            event.preventDefault();  // Prevent default form submission
+            
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Parse the returned HTML to extract prediction text (assuming it is in an element with class 'result')
+                    // Here we simply update the resultArea div.
+                    var resultHtml = $(response).find('.result').html();
+                    $('#resultArea').html(resultHtml);
+                },
+                error: function(xhr, status, error) {
+                    $('#resultArea').html('Error: ' + error);
+                }
+            });
+        });
+        
+        // Auto-fill Demo Inputs when "Try Demo Input" button is clicked.
+        document.getElementById("demoBtn").addEventListener("click", function() {
+            document.querySelector('select[name="airline"]').value = "IndiGo";
+            document.querySelector('select[name="destination"]').value = "Cochin";
+            document.querySelector('select[name="source"]').value = "Delhi";
+            document.querySelector('input[name="stops"]').value = 0;
+            document.querySelector('input[name="journey_day"]').value = 10;
+            document.querySelector('input[name="journey_month"]').value = 7;
+            document.querySelector('input[name="arrival_hour"]').value = 12;
+            document.querySelector('input[name="arrival_minute"]').value = 30;
+            document.querySelector('input[name="dep_hour"]').value = 9;
+            document.querySelector('input[name="dep_minute"]').value = 15;
+            document.querySelector('input[name="duration_hour"]').value = 2;
+            document.querySelector('input[name="duration_minute"]').value = 15;
+        });
+    </script>
+</body>
+</html>

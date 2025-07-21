@@ -1,0 +1,82 @@
+<!-- explore.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore Your Dataset</title>
+    <style>
+        body {
+            background: #1c1c2b;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #00f2fe;
+            margin-bottom: 40px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            background: #444;
+            border: none;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #00f2fe;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .chart-container {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+        .nav-link {
+            margin: 20px;
+            text-decoration: none;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Include Plotly.js from CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Explore Your Dataset</h1>
+    <form action="/explore" method="post" enctype="multipart/form-data">
+        <input type="file" name="datafile" accept=".xlsx, .xls" required>
+        <br>
+        <button type="submit">Upload and Analyze</button>
+    </form>
+    
+    {% if plotA_div %}
+    <div class="chart-container">
+        <h2>Price Distribution</h2>
+        {{ plotA_div|safe }}
+    </div>
+    {% endif %}
+    
+    {% if plotB_div %}
+    <div class="chart-container">
+        <h2>Duration (hours) vs Price</h2>
+        {{ plotB_div|safe }}
+    </div>
+    {% endif %}
+    
+    {% if plotC_div %}
+    <div class="chart-container">
+        <h2>Correlation Heatmap</h2>
+        {{ plotC_div|safe }}
+    </div>
+    {% endif %}
+    
+    <a class="nav-link" href="/">← Back to Home</a>
+</body>
+</html>

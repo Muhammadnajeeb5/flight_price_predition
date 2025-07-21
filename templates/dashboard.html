@@ -1,0 +1,48 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Price Dashboard</title>
+    <style>
+        body {
+            background: #1c1c2b;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #00f2fe;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            margin-bottom: 50px;
+        }
+        .nav-link {
+            margin: 20px;
+            text-decoration: none;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Include Plotly.js from CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Flight Price Dashboard</h1>
+    <div class="chart-container">
+        <h2>Airline vs. Price</h2>
+        {{ plot1_div|safe }}
+    </div>
+    <div class="chart-container">
+        <h2>Total Stops vs. Price</h2>
+        {{ plot2_div|safe }}
+    </div>
+    <div class="chart-container">
+        <h2>Feature Correlation Heatmap</h2>
+        {{ plot3_div|safe }}
+    </div>
+    <a class="nav-link" href="/">← Back to Home</a>
+</body>
+</html>
