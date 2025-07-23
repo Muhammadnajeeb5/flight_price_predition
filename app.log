@@ -952,3 +952,18 @@ Feature names must be in the same order as they were in fit.
 2025-04-17 23:53:43,702 [INFO] __main__: User-uploaded data processed and plots generated successfully
 2025-04-17 23:53:43,716 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 23:53:43] "POST /explore HTTP/1.1" 200 -
 2025-04-17 23:53:43,716 [INFO] werkzeug: 127.0.0.1 - - [17/Apr/2025 23:53:43] "POST /explore HTTP/1.1" 200 -
+2025-07-21 16:03:38,845 [INFO] app: Model loaded successfully from final_rf.pkl
+2025-07-21 16:05:30,836 [INFO] app: Model loaded successfully from final_rf.pkl
+2025-07-21 17:32:27,336 [INFO] app: Home page requested
+2025-07-21 17:32:35,284 [INFO] app: Received prediction request
+2025-07-21 17:32:35,286 [INFO] app: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-07-21 17:32:35,302 [INFO] app: Prediction successful: ₹4329.19
+2025-07-21 18:17:04,921 [INFO] app: Model loaded successfully from final_rf.pkl
+2025-07-22 08:40:26,218 [INFO] app: Model loaded successfully from final_rf.pkl
+2025-07-22 08:40:26,224 [INFO] app: Home page requested
+2025-07-22 08:41:23,229 [INFO] app: Home page requested
+2025-07-22 11:40:22,963 [INFO] app: Model loaded successfully from final_rf.pkl
+2025-07-22 11:42:18,544 [INFO] app: Home page requested
+2025-07-22 11:42:28,180 [INFO] app: Received prediction request
+2025-07-22 11:42:28,183 [INFO] app: Feature vector: [0, 0, 0, 10, 7, 9, 15, 12, 30, 2, 15, 0, 0, 1, 0, 0]
+2025-07-22 11:42:28,201 [INFO] app: Prediction successful: ₹4329.19
