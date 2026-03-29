@@ -56,23 +56,17 @@
         <button type="submit">Upload and Analyze</button>
     </form>
     
-    {% if plotA_div %}
-    <div class="chart-container">
-        <h2>Price Distribution</h2>
-        {{ plotA_div|safe }}
-    </div>
-    {% endif %}
-    
+  
     {% if plotB_div %}
     <div class="chart-container">
-        <h2>Duration (hours) vs Price</h2>
+        <h2>Airline vs Price</h2>
         {{ plotB_div|safe }}
     </div>
     {% endif %}
     
     {% if plotC_div %}
     <div class="chart-container">
-        <h2>Correlation Heatmap</h2>
+        <h2>Total Stops vs Price</h2>
         {{ plotC_div|safe }}
     </div>
     {% endif %}

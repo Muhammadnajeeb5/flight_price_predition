@@ -113,10 +113,13 @@ def insights():
         logger.info("Insights page requested")
         # Define the feature names (must match the training order)
         feature_names = [
-            "Airline", "Destination", "Total_Stops", "Journey_day", "Journey_month",
-            "Arrival_hour", "Arrival_minute", "Dep_hour", "Dep_minute",
+            "Airline", "Destination", "Total_Stops", 
+            "Journey_day", "Journey_month",
+            "Dep_Time_hour", "Dep_Time_minute",
+            "Arrival_Time_hour", "Arrival_Time_minute",
             "Duration_hours", "Duration_minutes",
-            "Source_Banglore", "Source_Kolkata", "Source_Delhi", "Source_Chennai", "Source_Mumbai"
+            "Source_Banglore", "Source_Kolkata", 
+            "Source_Delhi", "Source_Chennai", "Source_Mumbai"
         ]
         importances = model.feature_importances_
         df_imp = pd.DataFrame({
@@ -140,39 +143,34 @@ def insights():
 def dashboard():
     try:
         logger.info("Dashboard page requested")
-        df = pd.read_excel(r"C:\Users\HP\Music\Data_Train.xlsx")
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        data_path = os.path.join(BASE_DIR, "Data_Train.xlsx")
+
+        if not os.path.exists(data_path):
+            return "Error: Data_Train.xlsx not found in project folder"
+
+        df = pd.read_excel(data_path)
         df.dropna(inplace=True)
         df['Price'] = df['Price'].apply(lambda x: min(x, 35000))
-        stops_mapping = {'non-stop': 0, '1 stop': 1, '2 stops': 2, '3 stops': 3, '4 stops': 4}
-        df['Total_Stops'] = df['Total_Stops'].map(stops_mapping)
-        
-        # Plot 1: Airline vs. Price (Box Plot)
-        fig1 = px.box(df, x="Airline", y="Price", title="Airline vs. Price",
-                      color="Airline", template="plotly_dark")
+
+        fig1 = px.box(
+            df, x="Airline", y="Price",
+            title="Airline vs. Price",
+            color="Airline", template="plotly_dark"
+        )
         plot1_div = plot(fig1, output_type="div", include_plotlyjs=False)
-        
-        # Plot 2: Total Stops vs. Price (Violin Plot)
-        fig2 = px.violin(df, x="Total_Stops", y="Price", box=True, points="all",
-                         title="Total Stops vs. Price", template="plotly_dark")
-        plot2_div = plot(fig2, output_type="div", include_plotlyjs=False)
-        
-        # Plot 3: Correlation Heatmap
-        df['Journey_day'] = pd.to_datetime(df['Date_of_Journey']).dt.day
-        df['Journey_month'] = pd.to_datetime(df['Date_of_Journey']).dt.month
-        df['Duration'] = df['Duration'].apply(lambda x: x if ('h' in x and 'm' in x) else '0h 0m')
-        df['Duration_hours'] = df['Duration'].apply(lambda x: int(x.split('h')[0]))
-        df['Duration_minutes'] = df['Duration'].apply(lambda x: int(x.split(' ')[1].split('m')[0]))
-        corr_cols = ['Price', 'Total_Stops', 'Duration_hours', 'Duration_minutes', 'Journey_day', 'Journey_month']
-        fig3 = px.imshow(df[corr_cols].corr(), text_auto=True, title="Feature Correlation Heatmap", template="plotly_dark")
-        plot3_div = plot(fig3, output_type="div", include_plotlyjs=False)
-        
-        logger.info("Dashboard plots generated successfully")
-        return render_template("dashboard.html", plot1_div=plot1_div, plot2_div=plot2_div, plot3_div=plot3_div)
-    
+
+        logger.info("Dashboard plot generated successfully")
+        return render_template(
+            "dashboard.html",
+            plot1_div=plot1_div,
+            plot2_div="",
+            plot3_div=""
+        )
+
     except Exception as e:
         logger.error(f"Error generating dashboard: {e}", exc_info=True)
         return f"Error generating dashboard: {e}"
-
 # ----------------------------
 # Explore: User-Uploaded Dataset for Exploration
 # ----------------------------
@@ -184,109 +182,50 @@ def explore():
             file = request.files["datafile"]
             if not file:
                 flash("No file selected", "error")
-                logger.warning("No file uploaded in /explore")
                 return redirect(request.url)
 
+            # Load raw data — no encoding needed for visualisation
             df = pd.read_excel(file)
-            logger.info("Raw data loaded successfully")
+            df.dropna(inplace=True)
 
-            # --- Data Preprocessing (Crucial!) ---
-            try:
-                # Date and Time Features
-                df['Date_of_Journey'] = pd.to_datetime(df['Date_of_Journey'], format='%d/%m/%Y', errors='coerce')
-                df['Journey_day'] = df['Date_of_Journey'].dt.day
-                df['Journey_month'] = df['Date_of_Journey'].dt.month
+            # Cap extreme prices for cleaner charts
+            df['Price'] = df['Price'].apply(lambda x: min(x, 35000))
 
-                df['Dep_Time'] = pd.to_datetime(df['Dep_Time'], format='%H:%M', errors='coerce') # Assuming HH:MM
-                df['Dep_Time_hour'] = df['Dep_Time'].dt.hour
-                df['Dep_Time_minute'] = df['Dep_Time'].dt.minute
+            logger.info(f"Data loaded: {df.shape[0]} rows")
+            logger.info(f"Price sample: {df['Price'].head().tolist()}")
 
-                df['Arrival_Time'] = pd.to_datetime(df['Arrival_Time'], format='%H:%M', errors='coerce') # Assuming HH:MM
-                df['Arrival_Time_hour'] = df['Arrival_Time'].dt.hour
-                df['Arrival_Time_minute'] = df['Arrival_Time'].dt.minute
 
-                # Duration
-                def preprocess_duration(x):
-                    if 'h' not in x:
-                        x = '0h ' + x
-                    elif 'm' not in x:
-                        x = x + ' 0m'
-                    return x
+            # ── Plot B: Airline vs Price ──────────────────────────
+            figB = px.box(
+                df, x="Airline", y="Price",
+                title="Airline vs Price",
+                color="Airline",
+                template="plotly_dark"
+            )
+            plotB_div = plot(figB, output_type="div", include_plotlyjs=False)
 
-                df['Duration'] = df['Duration'].apply(preprocess_duration)
-                df[['Duration_hours', 'Duration_minutes']] = df['Duration'].str.split(' ', expand=True)
-                df['Duration_hours'] = df['Duration_hours'].str.extract('(\d+)').astype(int)
-                df['Duration_minutes'] = df['Duration_minutes'].str.extract('(\d+)').astype(int)
-                df.drop(columns=['Duration'], inplace=True)
+            # ── Plot C: Total Stops vs Price ──────────────────────
+            figC = px.box(
+                df, x="Total_Stops", y="Price",
+                title="Total Stops vs Price",
+                color="Total_Stops",
+                template="plotly_dark"
+            )
+            plotC_div = plot(figC, output_type="div", include_plotlyjs=False)
 
-                # Encode categorical values
-                df['Destination'].replace('New Delhi', 'Delhi', inplace=True)
-                dest = df.groupby('Destination')['Price'].mean().sort_values().index
-                df['Destination'] = df['Destination'].map({k: i for i, k in enumerate(dest)})
+            logger.info("Explore plots generated successfully")
+            return render_template(
+                "explore.html",
+                plotB_div=plotB_div,
+                plotC_div=plotC_div
+            )
 
-                airlines = df.groupby('Airline')['Price'].mean().sort_values().index
-                df['Airline'] = df['Airline'].map({k: i for i, k in enumerate(airlines)})
-
-                stops = {'non-stop': 0, '1 stop': 1, '2 stops': 2, '3 stops': 3, '4 stops': 4}
-                df['Total_Stops'] = df['Total_Stops'].map(stops)
-
-                for cat in df['Source'].unique():
-                    df['Source_' + cat] = df['Source'].apply(lambda x: 1 if x == cat else 0)
-
-                # Drop unused columns
-                df.drop(columns=[
-                    'Date_of_Journey', 'Dep_Time', 'Arrival_Time', 'Route',
-                    'Additional_Info', 'Source', 'Journey_year',
-                    'Duration_total_mins'
-                ], errors='ignore', inplace=True)
-
-                # Outlier cap (Important to apply this!)
-                df['Price'] = np.where(df['Price'] > 35000, df['Price'].median(), df['Price'])
-
-                df.dropna(inplace=True)  # Remove any remaining NaNs after processing
-                logger.info("Data preprocessing completed")
-
-            except Exception as preprocess_error:
-                logger.error(f"Error during preprocessing: {preprocess_error}", exc_info=True)
-                flash(f"Error during data preprocessing: {preprocess_error}", "error")
-                return redirect(request.url)
-
-            # --- Plotting ---
-            try:
-                # Plot A: Price Distribution
-                figA = px.histogram(df, x="Price", title="Price Distribution", template="plotly_dark")
-                plotA_div = plot(figA, output_type="div", include_plotlyjs=False)
-
-                # Plot B: Duration (hours) vs Price if Duration column exists
-                if "Duration_hours" in df.columns and "Price" in df.columns:
-                    figB = px.scatter(df, x="Duration_hours", y="Price", title="Duration (hours) vs Price", template="plotly_dark")
-                    plotB_div = plot(figB, output_type="div", include_plotlyjs=False)
-                else:
-                    plotB_div = "<p>Duration or Price column not found.</p>"
-
-                # Plot C: Correlation Heatmap
-                numeric_cols = df.select_dtypes(include=np.number).columns
-                if len(numeric_cols) > 1:
-                    figC = px.imshow(df[numeric_cols].corr(), text_auto=True, title="Correlation Heatmap", template="plotly_dark")
-                    plotC_div = plot(figC, output_type="div", include_plotlyjs=False)
-                else:
-                    plotC_div = "<p>Not enough numeric columns for correlation plot.</p>"
-
-                logger.info("User-uploaded data processed and plots generated successfully")
-                return render_template("explore.html", plotA_div=plotA_div, plotB_div=plotB_div, plotC_div=plotC_div)
-
-            except Exception as plot_error:
-                logger.error(f"Error during plotting: {plot_error}", exc_info=True)
-                flash(f"Error during plotting: {plot_error}", "error")
-                return redirect(request.url)
-
-        except Exception as overall_error:
-            logger.error(f"Error processing uploaded file: {overall_error}", exc_info=True)
-            flash(f"Error processing file: {overall_error}", "error")
+        except Exception as e:
+            logger.error(f"Error in explore route: {e}", exc_info=True)
+            flash(f"Error processing file: {e}", "error")
             return redirect(request.url)
 
     else:
-        logger.info("Explore page requested (GET)")
         return render_template("explore.html")
 # ----------------------------
 # SHAP: Model Explainability Route
@@ -299,44 +238,74 @@ def shap_explain():
         from io import BytesIO
         import base64
 
-        # For proper SHAP explanations, we need a sample of your model’s input features.
-        # Ideally, you would use the same preprocessed data that was used during training.
-        # Here we simulate that by generating a DataFrame with the same 16 columns (order must match training).
-        # Update this section with your actual preprocessed features if available.
+        logger.info("SHAP explanation requested")
+
+        # Column names must match exactly what the model was trained on
         columns = [
             "Airline", "Destination", "Total_Stops", "Journey_day", "Journey_month",
-            "Arrival_hour", "Arrival_minute", "Dep_hour", "Dep_minute",
+            "Dep_Time_hour", "Dep_Time_minute", "Arrival_Time_hour", "Arrival_Time_minute",
             "Duration_hours", "Duration_minutes",
             "Source_Banglore", "Source_Kolkata", "Source_Delhi", "Source_Chennai", "Source_Mumbai"
         ]
-        # For demonstration purposes, generate 50 rows of dummy data.
-        # In practice, replace this with your real preprocessed dataset, for example by loading it from a CSV.
-        import numpy as np
-        X_sample = pd.DataFrame(np.random.rand(50, len(columns)), columns=columns)
-        
-        # Create a SHAP TreeExplainer (since your model is a Random Forest)
+
+        # Load real training data saved from the notebook
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        sample_path = os.path.join(BASE_DIR, "X_train_sample.csv")
+
+        if os.path.exists(sample_path):
+            # Use real training data — this gives meaningful SHAP values
+            X_sample = pd.read_csv(sample_path)
+
+            # Keep only the columns the model expects, in the right order
+            X_sample = X_sample[[col for col in columns if col in X_sample.columns]]
+
+            # Take a random sample of 50 rows for speed
+            X_sample = X_sample.sample(min(50, len(X_sample)), random_state=42)
+            logger.info("Loaded real training data for SHAP")
+
+        else:
+            # Fallback: use dummy data if CSV not found, but warn about it
+            logger.warning("X_train_sample.csv not found — using dummy data for SHAP")
+            X_sample = pd.DataFrame(
+                np.zeros((50, len(columns))), 
+                columns=columns
+            )
+
+        # Create SHAP TreeExplainer — designed specifically for tree-based models
         explainer = shap.TreeExplainer(model)
         shap_values = explainer.shap_values(X_sample)
-        
-        # Create a SHAP summary plot (a bar plot for clarity)
-        plt.figure()
-        shap.summary_plot(shap_values, X_sample, plot_type="bar", show=False)
-        
-        # Save the plot to a BytesIO object and encode as Base64 to pass to the template
+
+        # Generate SHAP summary bar plot
+        plt.figure(figsize=(10, 6))
+        shap.summary_plot(
+            shap_values, 
+            X_sample, 
+            plot_type="bar", 
+            show=False,
+            plot_size=(10, 6)
+        )
+        plt.title("SHAP Feature Importance", color="white", fontsize=14)
+        plt.tight_layout()
+
+        # Convert plot to base64 image to embed directly in HTML
         buf = BytesIO()
-        plt.savefig(buf, format="png")
+        plt.savefig(buf, format="png", bbox_inches="tight", 
+                    facecolor="#1c1c2b", dpi=100)
         buf.seek(0)
         plot_url = base64.b64encode(buf.getvalue()).decode("utf-8")
         plt.close()
-        
+
+        logger.info("SHAP explanation generated successfully")
         return render_template("shap.html", plot_url=plot_url)
-    
+
+    except ImportError:
+        logger.error("SHAP library not installed")
+        return "Error: SHAP library is not installed. Run: pip install shap"
+
     except Exception as e:
-        # Log the error and return a simple error message
-        app.logger.error(f"Error generating SHAP explanation: {e}", exc_info=True)
+        logger.error(f"Error generating SHAP explanation: {e}", exc_info=True)
         return f"Error generating SHAP explanation: {e}"
-
-
+        
 if __name__ == "__main__":
     logger.info("Starting Flask app")
     app.run(debug=True)
