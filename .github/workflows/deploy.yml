@@ -22,6 +22,21 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
           cd /home/ec2-user/flight_price_predition
+
+          # Pull latest code
           git pull origin master
+
+          # Create venv if it does not exist
+          if [ ! -d "/home/ec2-user/venv" ]; then
+            python3 -m venv /home/ec2-user/venv
+          fi
+
+          # Install and update all packages
+          /home/ec2-user/venv/bin/pip install --upgrade pip
+          /home/ec2-user/venv/bin/pip install -r requirements.txt
+
+          # Restart services
+          sudo systemctl daemon-reload
           sudo systemctl restart gunicorn
+          sudo systemctl restart nginx
         EOF
